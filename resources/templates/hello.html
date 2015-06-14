@@ -1,0 +1,31 @@
+<html>
+  <head>
+      <META http-equiv="Content-Type" content="text/html; charset=UTF-8">
+      <title>om demo</title>
+  </head>
+  <body>
+    <div id="app"></div>
+    <!-- scripts and styles -->
+    <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css">
+    <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap-theme.min.css">
+    {% style "/css/screen.css" %}
+
+    <script src="//code.jquery.com/jquery-2.0.3.min.js" type="text/javascript"></script>
+    <script src="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>
+    <script type="text/javascript">
+        var context = "{{servlet-context}}";
+    </script>
+    {% if dev %}
+      <script src="//cdnjs.cloudflare.com/ajax/libs/react/0.11.2/react.js"></script>
+      {% script "/js/out/goog/base.js" %}
+      {% script "/js/app.js" %}
+      <script type="text/javascript">goog.require("helloom.core");</script>
+      <script>helloom.core.hello()</script>
+      <script>helloom.core.fact()</script>
+      <script>helloom.core.happy()</script>
+    {% else %}
+      <script src="//cdnjs.cloudflare.com/ajax/libs/react/0.11.2/react.min.js"></script>
+      {% script "/js/app.js" %}
+    {% endif %}
+  </body>
+</html>
