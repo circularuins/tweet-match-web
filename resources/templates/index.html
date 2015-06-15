@@ -7,34 +7,65 @@
     <div id="navbar"></div>
 
     <div class="container">
+
       <div class="jumbotron">
-        <h1>ユーザー一覧</h1>
+        <h2>ツイま</h2>
       </div>
+
       <div class="row-fluid">
+        <h3>新着ユーザー一覧</h3>
 
-        <ul>
-          {% for user in users %}
-          <li>{{user.user-name}}
-            <div>@{{user.screen-name}}</div>
-            <img src={{user.profile-image}}>
-            <a href={{user.url}}>リンク</a>
-            <div>よくつぶやく：{{user.top-words}}</div>
+        <div style="float:left; background-color: grey;">
+          <ul>
+            {% for boy in boys %}
+            <li>{{boy.user-name}}
+              <div>@{{boy.screen-name}}</div>
+              <img src={{boy.profile-image}}>
+              <a href={{boy.url}}>Twitterへ</a>
+              <div>よくつぶやく：{{boy.top-words}}</div>
 
-            {% for rank in user.ranking %}
-            <ul>
-              <h2><div>{{forloop.counter}}位</div></h2>
-              <img src={{rank.profile-image}}>
-              <a href=https://twitter.com/{{rank.screen-name}}>リンク</a>
-              <div>名前：{{rank.user-name}}</div>
-              <div>ID：{{rank.screen-name}}</div>
-              <div>レーベンシュタイン距離：{{rank.leven}}</div>
-            </ul>
+              {% for b-rank in boy.ranking %}
+              <ul>
+                <h2><div>{{forloop.counter}}位</div></h2>
+                <img src={{b-rank.profile-image}}>
+                <a href=https://twitter.com/{{b-rank.screen-name}}>Twitterへ</a>
+                <div>名前：{{b-rank.user-name}}</div>
+                <div>ID：{{b-rank.screen-name}}</div>
+                <div>レーベンシュタイン距離：{{b-rank.leven}}</div>
+              </ul>
+              {% endfor %}
+            </li>
+
+            <br />
             {% endfor %}
-          </li>
-
-          <br />
-          {% endfor %}
           </ul>
+        </div>
+
+        <div style="float:left; background-color: pink;">
+          <ul>
+            {% for girl in girls %}
+            <li>{{girl.user-name}}
+              <div>@{{girl.screen-name}}</div>
+              <img src={{girl.profile-image}}>
+              <a href={{girl.url}}>Twitterへ</a>
+              <div>よくつぶやく：{{girl.top-words}}</div>
+
+              {% for g-rank in girl.ranking %}
+              <ul>
+                <h2><div>{{forloop.counter}}位</div></h2>
+                <img src={{g-rank.profile-image}}>
+                <a href=https://twitter.com/{{g-rank.screen-name}}>Twitterへ</a>
+                <div>名前：{{g-rank.user-name}}</div>
+                <div>ID：{{g-rank.screen-name}}</div>
+                <div>レーベンシュタイン距離：{{g-rank.leven}}</div>
+              </ul>
+              {% endfor %}
+            </li>
+
+            <br />
+            {% endfor %}
+          </ul>
+        </div>
       </div>
     </div>
 

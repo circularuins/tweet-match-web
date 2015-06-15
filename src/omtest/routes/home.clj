@@ -21,7 +21,8 @@
 
 (defn index-page []
   (layout/render
-   "index.html" {:users (mongo/all-users)}))
+   "index.html" {:boys (mongo/get-recent-users "b")
+                 :girls (mongo/get-recent-users "g")}))
 
 (defn save-document [doc]
       (pprint doc)
