@@ -24,6 +24,10 @@
    "index.html" {:boys (mongo/get-recent-users "b")
                  :girls (mongo/get-recent-users "g")}))
 
+(defn ranking-page [screen-name]
+  (layout/render
+   "ranking.html" {:user (mongo/get-single-user screen-name)}))
+
 (defn save-document [doc]
       (pprint doc)
       {:status "ok"})
@@ -44,6 +48,7 @@
 (defroutes home-routes
   (GET "/" [] (home-page))
   (GET "/index" [] (index-page))
+  (GET "/ranking/:screenname" [screenname] (ranking-page screenname))
   (GET "/hello" [] (hello-page))
   (GET "/login" [] (login-page))
   (POST "/eval" [request] (eval-clojure request))

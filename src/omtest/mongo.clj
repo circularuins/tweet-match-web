@@ -31,6 +31,10 @@
        (take 30)
        (map fix-object)))
 
+(defn get-single-user
+  [screen-name]
+  (mc/find-one-as-map db "mach-ranking" {:screen-name screen-name}))
+
 (defn get-rnd-user
   [sex]
   (->> (mq/with-collection db "mach-ranking"
