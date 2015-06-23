@@ -1,93 +1,51 @@
-<html>
-  <head>
-    <META http-equiv="Content-Type" content="text/html; charset=UTF-8">
-    <title>ユーザー一覧</title>
-  </head>
-  <body>
-    <div id="navbar"></div>
-
-    <div class="container">
-
-      <div class="jumbotron">
-        <h2>ツイま</h2>
-      </div>
-
-      <div class="row-fluid">
-        <h3>新着ユーザー一覧</h3>
-
-        <div style="float:left; background-color: grey;">
-          <ul>
-            {% for boy in boys %}
-            <li>{{boy.user-name}}
-              <div>@{{boy.screen-name}}</div>
-              <img src={{boy.profile-image}}>
-              <a href={{boy.url}}>Twitterへ</a>
-              <a href=http://133.242.135.110:3003/ranking/{{boy.screen-name}}>rankingへ</a>
-              <div>よくつぶやく：{{boy.top-words}}</div>
-
-              {% for b-rank in boy.ranking %}
-              <ul>
-                <h2><div>{{forloop.counter}}位</div></h2>
-                <img src={{b-rank.profile-image}}>
-                <a href=https://twitter.com/{{b-rank.screen-name}}>Twitterへ</a>
-                <div>名前：{{b-rank.user-name}}</div>
-                <div>ID：{{b-rank.screen-name}}</div>
-                <div>レーベンシュタイン距離：{{b-rank.leven}}</div>
-              </ul>
-              {% endfor %}
-            </li>
-
-            <br />
-            {% endfor %}
-          </ul>
-        </div>
-
-        <div style="float:left; background-color: pink;">
-          <ul>
-            {% for girl in girls %}
-            <li>{{girl.user-name}}
-              <div>@{{girl.screen-name}}</div>
-              <img src={{girl.profile-image}}>
-              <a href={{girl.url}}>Twitterへ</a>
-              <div>よくつぶやく：{{girl.top-words}}</div>
-
-              {% for g-rank in girl.ranking %}
-              <ul>
-                <h2><div>{{forloop.counter}}位</div></h2>
-                <img src={{g-rank.profile-image}}>
-                <a href=https://twitter.com/{{g-rank.screen-name}}>Twitterへ</a>
-                <div>名前：{{g-rank.user-name}}</div>
-                <div>ID：{{g-rank.screen-name}}</div>
-                <div>レーベンシュタイン距離：{{g-rank.leven}}</div>
-              </ul>
-              {% endfor %}
-            </li>
-
-            <br />
-            {% endfor %}
-          </ul>
+{% extends "base.html" %}
+{% block content %}
+<div id="main-page">
+  <div id="new" class="row">
+    <div class="col-lg-12 splash">
+      <div class="clear" id="featured">
+        <div>
+          <h2>新着ユーザー一覧</h2>
         </div>
       </div>
     </div>
+  </div>
 
-    <!-- scripts and styles -->
-    <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css">
-    <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap-theme.min.css">
-    {% style "/css/screen.css" %}
+  <div class="row">
+    <div class="col-lg-12">
+    <div class="pull-left info">
+      <ul>
+        {% for boy in boys %}
+        <li>{{boy.user-name}}
+          <div>@{{boy.screen-name}}</div>
+          <a href=http://133.242.135.110:3003/ranking/{{boy.screen-name}}>
+            <img src={{boy.profile-image}} onerror="this.src='{{servlet-context}}/img/golden_turkey.gif';" height=80 width=80 border="0">
+          </a>
+        </li>
+        <br />
+        {% endfor %}
+      </ul>
+    </div>
 
-    <script src="//code.jquery.com/jquery-2.0.3.min.js" type="text/javascript"></script>
-    <script src="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>
-    <script type="text/javascript">
-      var context = "{{servlet-context}}";
-    </script>
-    {% if dev %}
-    <script src="//cdnjs.cloudflare.com/ajax/libs/react/0.11.2/react.js"></script>
-    {% script "/js/out/goog/base.js" %}
-    {% script "/js/app.js" %}
-    <script type="text/javascript">goog.require("omtest.app");</script>
-    {% else %}
-    <script src="//cdnjs.cloudflare.com/ajax/libs/react/0.11.2/react.min.js"></script>
-    {% script "/js/app.js" %}
-    {% endif %}
-  </body>
-</html>
+    <div class="pull-left info">
+      <ul>
+        {% for girl in girls %}
+        <li>{{girl.user-name}}
+          <div>@{{girl.screen-name}}</div>
+          <a href=http://133.242.135.110:3003/ranking/{{girl.screen-name}}>
+            <img src={{girl.profile-image}} onerror="this.src='{{servlet-context}}/img/golden_turkey.gif';" height=80 width=80 border="0">
+          </a>
+        </li>
+
+        <br />
+        {% endfor %}
+      </ul>
+    </div>
+    </div>
+  </div>
+</div>
+{% endblock %}
+
+{% block page-scripts %}
+  {% script "//code.jquery.com/jquery-2.0.3.min.js" %}
+{% endblock %}

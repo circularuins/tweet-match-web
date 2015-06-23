@@ -1,0 +1,35 @@
+{% extends "base.html" %}
+{% block content %}
+<div class="container">
+
+  <div class="row-fluid">
+    <h3>ランキング</h3>
+    <div>
+      <ul>
+        <li>{{user.user-name}}
+          <div>@{{user.screen-name}}</div>
+          <img src={{user.profile-image}} alt="not found" border="0">
+          <a href=https://twitter.com/{{user.screen-name}}>Twitterへ</a>
+          <div>よくつぶやく：{{user.top-words}}</div>
+
+          {% for ranker in user.ranking %}
+          <ul>
+            <h2><div>{{forloop.counter}}位</div></h2>
+            <a href=http://133.242.135.110:3003/ranking/{{ranker.screen-name}}>
+              <img src={{ranker.profile-image}} onerror="this.src='{{servlet-context}}/img/golden_turkey.gif';" height=80 width=80 border="0">
+            </a>
+            <div>名前：{{ranker.user-name}}</div>
+            <div>ID：{{ranker.screen-name}}</div>
+            <div>レーベンシュタイン距離：{{ranker.leven}}</div>
+          </ul>
+          {% endfor %}
+        </li>
+      </ul>
+    </div>
+  </div>
+</div>
+{% endblock %}
+
+{% block page-scripts %}
+  {% script "//code.jquery.com/jquery-2.0.3.min.js" %}
+{% endblock %}

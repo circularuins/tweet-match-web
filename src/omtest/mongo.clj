@@ -28,7 +28,7 @@
          (mq/find {:sex sex})
          (mq/sort (array-map :date -1))
          )
-       (take 30)
+       (take 50)
        (map fix-object)))
 
 (defn get-single-user
