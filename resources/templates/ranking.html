@@ -7,9 +7,11 @@
     <div>
       <ul>
         <li>{{user.user-name}}
+          <img src={{user.profile-back-url}} alt="not found" border="0">
           <div>@{{user.screen-name}}</div>
           <img src={{user.profile-image}} alt="not found" border="0">
           <a href=https://twitter.com/{{user.screen-name}}>Twitterへ</a>
+          <div>{{user.description}}</div>
           <div>よくつぶやく：{{user.top-words}}</div>
 
           {% for ranker in user.ranking %}
