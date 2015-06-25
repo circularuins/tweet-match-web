@@ -21,8 +21,7 @@
 
 (defn index-page []
   (layout/render
-   "index.html" {:boys (mongo/get-recent-users "b")
-                 :girls (mongo/get-recent-users "g")}))
+   "index.html" {:users (mongo/get-recent-users)}))
 
 (defn ranking-page [screen-name]
   (layout/render

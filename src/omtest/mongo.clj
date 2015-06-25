@@ -22,13 +22,21 @@
 
 (def db (mg/get-db (mg/connect) "matching-db"))
 
-(defn get-recent-users
+(defn get-recent-users-by-sex
   [sex]
   (->> (mq/with-collection db "mach-ranking"
          (mq/find {:sex sex})
          (mq/sort (array-map :date -1))
          )
        (take 50)
+       (map fix-object)))
+
+(defn get-recent-users
+  []
+  (->> (mq/with-collection db "mach-ranking"
+         (mq/sort (array-map :date -1))
+         )
+       (take 100)
        (map fix-object)))
 
 (defn get-single-user

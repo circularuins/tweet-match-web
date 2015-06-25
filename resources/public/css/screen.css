@@ -265,6 +265,25 @@ article {
     font-weight: bold;
     color: #707070;
 }
+
+#boy {
+    background-color : #AAEEDD;
+    border-radius: 10px;
+    margin-bottom: 20px;
+    margin-left: 10px;
+    margin-right: 10px;
+    padding: 5px;
+}
+
+#girl {
+    background-color : #F48FB1;
+    border-radius: 10px;
+    margin-bottom: 20px;
+    margin-left: 10px;
+    margin-right: 10px;
+    padding: 5px;
+}
+
 .shell pre {
     padding: 10px;
     color: #fff;
