@@ -9,6 +9,8 @@
                       [selmer.filters :as filters]))
 
 (filters/add-filter! :leven-to-percent (fn [leven] (mongo/calc-match-percent leven)))
+(filters/add-filter! :get-tweet (fn [screen-name] (mongo/get-user-tweet screen-name)))
+(filters/add-filter! :resize-tag (fn [size] (str (* 5 size))))
 
 (defn home-page []
       (layout/render

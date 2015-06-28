@@ -6,7 +6,7 @@
     <div>
       <ul>
         <h2>{{user.user-name}}</h2>
-          <img src={{user.profile-back-url}} alt="not found" border="0">
+          <img src={{user.profile-back-url}} alt="not found" border="0" width=100%>
           <div>@{{user.screen-name}}</div>
           <img src={{user.profile-image}} alt="not found" border="0">
           <a href=https://twitter.com/{{user.screen-name}}>Twitterへ</a>
@@ -14,7 +14,15 @@
           <h3>よくつぶやく</h3>
           <ul class="tag">
             {% for word in user.top-words %}
-            <li><a href="#">{{word}}</a></li>
+            {% ifequal word.word "彼" %}
+            {% ifequal user.sex "b" %}
+            <li><a href="#" style="font-size : {{word.count|resize-tag}}px">彼女</a></li>
+            {% else %}
+            <li><a href="#" style="font-size : {{word.count|resize-tag}}px">彼氏</a></li>
+            {% endifequal %}
+            {% else %}
+            <li><a href="#" style="font-size : {{word.count|resize-tag}}px">{{word.word}}</a></li>
+            {% endifequal %}
             {% endfor %}
           </ul>
 
@@ -24,16 +32,41 @@
           <h3>おすすめ男子</h3>
           {% endifequal %}
           {% for ranker in user.ranking %}
-          <ul>
+          {% ifequal user.sex "b" %}
+          <div id="girl">
             <h2><div>{{ranker.leven|leven-to-percent}}%</div></h2>
-            <a href=http://133.242.135.110:3003/ranking/{{ranker.screen-name}}>
-              <img src={{ranker.profile-image}} onerror="this.src='{{servlet-context}}/img/golden_turkey.gif';" height=80 width=80 border="0">
-            </a>
-            <div>名前：{{ranker.user-name}}</div>
-            <div>ID：{{ranker.screen-name}}</div>
+            <div class="icon">
+              <a href=http://133.242.135.110:3003/ranking/{{ranker.screen-name}}>
+                <img src={{ranker.profile-image}} onerror="this.src='{{servlet-context}}/img/golden_turkey.gif';" height=80 width=80 border="0">
+              </a>
+            </div>
+            <div class="wrapper">
+              <div class="tweet">{{ranker.screen-name|get-tweet}}</div>
+            </div>
+            <div style="clear:both;"></div>
+            <div>{{ranker.user-name}}</div>
+            <div>@{{ranker.screen-name}}</div>
             <div>レーベンシュタイン距離：{{ranker.leven}}</div>
             <div></div>
-          </ul>
+          </div>
+          {% else %}
+          <div id="boy">
+            <h2><div>{{ranker.leven|leven-to-percent}}%</div></h2>
+            <div class="icon">
+              <a href=http://133.242.135.110:3003/ranking/{{ranker.screen-name}}>
+                <img src={{ranker.profile-image}} onerror="this.src='{{servlet-context}}/img/golden_turkey.gif';" height=80 width=80 border="0">
+              </a>
+            </div>
+            <div class="wrapper">
+              <div class="tweet">{{ranker.screen-name|get-tweet}}</div>
+            </div>
+            <div style="clear:both;"></div>
+            <div>{{ranker.user-name}}</div>
+            <div>@{{ranker.screen-name}}</div>
+            <div>レーベンシュタイン距離：{{ranker.leven}}</div>
+            <div></div>
+          </div>
+          {% endifequal %}
           {% endfor %}
       </ul>
     </div>
