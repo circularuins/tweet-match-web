@@ -12,12 +12,15 @@
            java.util.regex.Pattern
            org.bson.types.ObjectId))
 
+(defn calc-match-percent [leven]
+  (* (/ (- 1000.0 leven) 400) 100))
+
 (defn fix-object [object]
   (let [id (:_id object)
-        id (:screen-name object)]
+        screen-name (:screen-name object)]
     (-> object
         (assoc :id (str id))
-        (assoc :url (str "https://twitter.com/" id))
+        (assoc :url (str "https://twitter.com/" screen-name))
         (dissoc :_id))))
 
 (def db (mg/get-db (mg/connect) "matching-db"))

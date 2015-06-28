@@ -5,7 +5,10 @@
                       [compojure.core :refer :all]
                       [noir.response :refer [edn]]
                       [clojure.pprint :refer [pprint]]
-                      [cemerick.austin.repls :refer (browser-connected-repl-js)]))
+                      [cemerick.austin.repls :refer (browser-connected-repl-js)]
+                      [selmer.filters :as filters]))
+
+(filters/add-filter! :leven-to-percent (fn [leven] (mongo/calc-match-percent leven)))
 
 (defn home-page []
       (layout/render

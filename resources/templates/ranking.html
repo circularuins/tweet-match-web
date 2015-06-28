@@ -3,29 +3,38 @@
 <div class="container">
 
   <div class="row-fluid">
-    <h3>ランキング</h3>
     <div>
       <ul>
-        <li>{{user.user-name}}
+        <h2>{{user.user-name}}</h2>
           <img src={{user.profile-back-url}} alt="not found" border="0">
           <div>@{{user.screen-name}}</div>
           <img src={{user.profile-image}} alt="not found" border="0">
           <a href=https://twitter.com/{{user.screen-name}}>Twitterへ</a>
           <div>{{user.description}}</div>
-          <div>よくつぶやく：{{user.top-words}}</div>
+          <h3>よくつぶやく</h3>
+          <ul class="tag">
+            {% for word in user.top-words %}
+            <li><a href="#">{{word}}</a></li>
+            {% endfor %}
+          </ul>
 
+          {% ifequal user.sex "b" %}
+          <h3>おすすめ女子</h3>
+          {% else %}
+          <h3>おすすめ男子</h3>
+          {% endifequal %}
           {% for ranker in user.ranking %}
           <ul>
-            <h2><div>{{forloop.counter}}位</div></h2>
+            <h2><div>{{ranker.leven|leven-to-percent}}%</div></h2>
             <a href=http://133.242.135.110:3003/ranking/{{ranker.screen-name}}>
               <img src={{ranker.profile-image}} onerror="this.src='{{servlet-context}}/img/golden_turkey.gif';" height=80 width=80 border="0">
             </a>
             <div>名前：{{ranker.user-name}}</div>
             <div>ID：{{ranker.screen-name}}</div>
             <div>レーベンシュタイン距離：{{ranker.leven}}</div>
+            <div></div>
           </ul>
           {% endfor %}
-        </li>
       </ul>
     </div>
   </div>
