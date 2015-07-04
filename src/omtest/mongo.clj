@@ -64,6 +64,16 @@
   (let [coll "mach-ranking"]
     (mc/update db coll {:screen-name screen-name} {$inc {:pv 1}})))
 
+(defn get-most-viewed-by-sex
+  [sex]
+  (->> (mq/with-collection db "mach-ranking"
+         (mq/find {:sex sex})
+         (mq/sort (array-map :pv -1))
+         )
+       (take 5)
+       (map fix-object)))
+
+
 ;; 補助関数
 
 (defn all-clear [coll]

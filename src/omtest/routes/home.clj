@@ -34,6 +34,11 @@
                    :user (mongo/get-single-user screen-name)
                    }))
 
+(defn fame-page []
+  (layout/render
+   "fame.html" {:boys (mongo/get-most-viewed-by-sex "b")
+                :girls (mongo/get-most-viewed-by-sex "g")}))
+
 (defn save-document [doc]
       (pprint doc)
       {:status "ok"})
@@ -55,6 +60,7 @@
   (GET "/" [] (home-page))
   (GET "/index" [] (index-page))
   (GET "/ranking/:screenname" [screenname] (ranking-page screenname))
+  (GET "/fame" [] (fame-page))
   (GET "/hello" [] (hello-page))
   (GET "/login" [] (login-page))
   (POST "/eval" [request] (eval-clojure request))
