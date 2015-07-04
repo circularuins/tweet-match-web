@@ -3,6 +3,7 @@
             [monger.collection :as mc]
             [monger.query :as mq]
             [monger.operators :as mo]
+            [monger.operators :refer :all]
             [clojure.string :as str]
             [clj-time
              [core :as t]
@@ -58,6 +59,10 @@
        (shuffle)
        (take 10)))
 
+(defn inc-pv
+  [screen-name]
+  (let [coll "mach-ranking"]
+    (mc/update db coll {:screen-name screen-name} {$inc {:pv 1}})))
 
 ;; 補助関数
 

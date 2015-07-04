@@ -30,7 +30,9 @@
 
 (defn ranking-page [screen-name]
   (layout/render
-   "ranking.html" {:user (mongo/get-single-user screen-name)}))
+   "ranking.html" {:pv (mongo/inc-pv screen-name)
+                   :user (mongo/get-single-user screen-name)
+                   }))
 
 (defn save-document [doc]
       (pprint doc)
