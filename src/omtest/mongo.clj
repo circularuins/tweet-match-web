@@ -73,6 +73,11 @@
        (take 5)
        (map fix-object)))
 
+(defn get-users-by-word
+  [word]
+  (filter (fn[x] (some #(= (:word %) word) (:top-words x))) (mc/find-maps db "mach-ranking")))
+
+
 
 ;; 補助関数
 

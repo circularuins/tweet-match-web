@@ -1,0 +1,58 @@
+{% extends "base.html" %}
+{% block content %}
+<div id="main-page">
+  <div id="new" class="row">
+    <div class="col-lg-12 splash">
+      <div class="clear" id="featured">
+        <div>
+          <h2>検索結果</h2>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="col-lg-12">
+      <div>
+        {% for user in users %}
+        {% ifequal user.sex "b" %}
+        <div id="boy">
+          <div>{{user.user-name}}</div>
+          <div>@{{user.screen-name}}</div>
+          <div class="icon">
+            <a href=http://133.242.135.110:3003/ranking/{{user.screen-name}}>
+              <img src={{user.profile-image}} onerror="this.src='{{servlet-context}}/img/golden_turkey.gif';" height=80 width=80 border="0">
+            </a>
+          </div>
+          <div class="wrapper">
+            <div class="tweet">{{user.tweet}}</div>
+          </div>
+          <div style="clear:both;"></div>
+          <div align="right">{{user.date}}</div>
+        </div>
+        {% else %}
+        <div id="girl">
+          <div>{{user.user-name}}</div>
+          <div>@{{user.screen-name}}</div>
+          <div class="icon">
+            <a href=http://133.242.135.110:3003/ranking/{{user.screen-name}}>
+              <img src={{user.profile-image}} onerror="this.src='{{servlet-context}}/img/golden_turkey.gif';" height=80 width=80 border="0">
+            </a>
+          </div>
+          <div class="wrapper">
+            <div class="tweet">{{user.tweet}}</div>
+          </div>
+          <div style="clear:both;"></div>
+          <div align="right">{{user.date}}</div>
+        </div>
+        {% endifequal %}
+        {% endfor %}
+      </div>
+    </div>
+  </div>
+</div>
+{% endblock %}
+
+{% block page-scripts %}
+  {% script "//code.jquery.com/jquery-2.0.3.min.js" %}
+{% endblock %}

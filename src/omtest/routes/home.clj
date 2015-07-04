@@ -39,6 +39,10 @@
    "fame.html" {:boys (mongo/get-most-viewed-by-sex "b")
                 :girls (mongo/get-most-viewed-by-sex "g")}))
 
+(defn search-page [word]
+  (layout/render
+      "search.html" {:users (mongo/get-users-by-word word)}))
+
 (defn save-document [doc]
       (pprint doc)
       {:status "ok"})
@@ -61,6 +65,7 @@
   (GET "/index" [] (index-page))
   (GET "/ranking/:screenname" [screenname] (ranking-page screenname))
   (GET "/fame" [] (fame-page))
+  (GET "/search/:word" [word] (search-page word))
   (GET "/hello" [] (hello-page))
   (GET "/login" [] (login-page))
   (POST "/eval" [request] (eval-clojure request))
