@@ -273,7 +273,7 @@ article {
     margin-left: 10px;
     margin-right: 10px;
     padding: 10px;
-    width: 550px;
+    display:inline-block;
 }
 
 #girl {
@@ -283,7 +283,7 @@ article {
     margin-left: 10px;
     margin-right: 10px;
     padding: 10px;
-    width: 550px;
+    display:inline-block;
 }
 
 .shell pre {
@@ -443,12 +443,16 @@ ul.tag > li > a:hover {
     position: relative;
     background: #FFFFFF;
     height: 105px;
-    width: 360px;
+    display:inline-block;
     margin-bottom: 0px;
     margin-left: 15px;
     padding: 14px;
     border-radius: 50px;
     font-size: 12px;
+    max-width:250px;
+    min-height: 10px;
+    height: auto !important;
+    height: 50px;
 }
 
 .tweet:before {
