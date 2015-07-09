@@ -9,6 +9,14 @@
                       [selmer.filters :as filters]))
 
 (filters/add-filter! :leven-to-percent (fn [leven] (mongo/calc-match-percent leven)))
+(filters/add-filter! :leven-label (fn [leven] (let [label (mongo/calc-match-percent leven)]
+                                                (cond
+                                                  (>= label 100) "バグ？"
+                                                  (and (< label 100) (>= label 90)) "結婚しなよ"
+                                                  (and (< label 90) (>= label 80)) "運命！！"
+                                                  (and (< label 80) (>= label 70)) "脈あり？"
+                                                  (and (< label 70) (>= label 60)) "友達から"
+                                                  (< label 60) "ドンマイ"))))
 (filters/add-filter! :get-tweet (fn [screen-name] (mongo/get-user-tweet screen-name)))
 (filters/add-filter! :resize-tag (fn [size] (str (* 5 size))))
 
@@ -41,7 +49,8 @@
 
 (defn search-page [word]
   (layout/render
-      "search.html" {:users (mongo/get-users-by-word word)}))
+   "search.html" {:users (mongo/get-users-by-word word)
+                  :search-word word}))
 
 (defn save-document [doc]
       (pprint doc)

@@ -32,7 +32,7 @@
          (mq/find {:sex sex})
          (mq/sort (array-map :date -1))
          )
-       (take 50)
+       (take 100)
        (map fix-object)))
 
 (defn get-recent-users
@@ -70,7 +70,7 @@
          (mq/find {:sex sex})
          (mq/sort (array-map :pv -1))
          )
-       (take 5)
+       (take 10)
        (map fix-object)))
 
 (defn get-users-by-word

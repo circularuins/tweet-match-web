@@ -16,9 +16,9 @@
             {% for word in user.top-words %}
             {% ifequal word.word "彼" %}
             {% ifequal user.sex "b" %}
-            <li><a href=http://133.242.135.110:3003/search/彼女 style="font-size : {{word.count|resize-tag}}px">彼女</a></li>
+            <li><a href=http://133.242.135.110:3003/search/彼 style="font-size : {{word.count|resize-tag}}px">彼女</a></li>
             {% else %}
-            <li><a href=http://133.242.135.110:3003/search/彼氏 style="font-size : {{word.count|resize-tag}}px">彼氏</a></li>
+            <li><a href=http://133.242.135.110:3003/search/彼 style="font-size : {{word.count|resize-tag}}px">彼氏</a></li>
             {% endifequal %}
             {% else %}
             <li><a href=http://133.242.135.110:3003/search/{{word.word}} style="font-size : {{word.count|resize-tag}}px">{{word.word}}</a></li>
@@ -34,7 +34,8 @@
           {% for ranker in user.ranking %}
           {% ifequal user.sex "b" %}
           <div id="girl">
-            <h2><div>{{ranker.leven|leven-to-percent}}%</div></h2>
+            <div class="label-tag">{{ranker.leven|leven-label}}</div>
+            <div><h2>{{ranker.leven|leven-to-percent}}%</h2></div>
             <div class="icon">
               <a href=http://133.242.135.110:3003/ranking/{{ranker.screen-name}}>
                 <img src={{ranker.profile-image}} onerror="this.src='{{servlet-context}}/img/golden_turkey.gif';" height=80 width=80 border="0">
@@ -51,7 +52,9 @@
           </div>
           {% else %}
           <div id="boy">
-            <h2><div>{{ranker.leven|leven-to-percent}}%</div></h2>
+            <div class="label-tag">{{ranker.leven|leven-label}}</div>
+            <div><h2>{{ranker.leven|leven-to-percent}}%</h2></div>
+            <div style="clear:both;"></div>
             <div class="icon">
               <a href=http://133.242.135.110:3003/ranking/{{ranker.screen-name}}>
                 <img src={{ranker.profile-image}} onerror="this.src='{{servlet-context}}/img/golden_turkey.gif';" height=80 width=80 border="0">
