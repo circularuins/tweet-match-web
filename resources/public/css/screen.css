@@ -274,6 +274,10 @@ article {
     margin-right: 10px;
     padding: 10px;
     display:inline-block;
+    font-family: "HelveticaNeue-CondensedBold","Open Sans Condensed","Helvetica",sans-serif;
+    color: #555;
+    font-size: 1.2em;
+    font-weight: normal;
 }
 
 #girl {
@@ -284,6 +288,10 @@ article {
     margin-right: 10px;
     padding: 10px;
     display:inline-block;
+    font-family: "HelveticaNeue-CondensedBold","Open Sans Condensed","Helvetica",sans-serif;
+    color: #555;
+    font-size: 1.2em;
+    font-weight: normal;
 }
 
 .shell pre {
@@ -492,6 +500,11 @@ ul.tag > li > a:hover {
     max-width:500px;
     min-height: 10px;
     height: auto !important;
+    padding-bottom: 20px;
+    font-family: "HelveticaNeue-CondensedBold","Open Sans Condensed","Helvetica",sans-serif;
+    color: #555;
+    font-size: 1.2em;
+    font-weight: normal;
 }
 
 .box-b:after {
@@ -515,6 +528,10 @@ ul.tag > li > a:hover {
     max-width:500px;
     min-height: 10px;
     height: auto !important;
+    font-family: "HelveticaNeue-CondensedBold","Open Sans Condensed","Helvetica",sans-serif;
+    color: #555;
+    font-size: 1.2em;
+    font-weight: normal;
 }
 
 .box-g:after {
@@ -536,7 +553,7 @@ ul.tag > li > a:hover {
 #twit-name {
     font-family: "HelveticaNeue-CondensedBold","Open Sans Condensed","Helvetica",sans-serif;
     color: #555;
-    font-size: 1.8em;
+    font-size: 2.0em;
     font-weight: normal;
     margin-left: 20px;
 }
