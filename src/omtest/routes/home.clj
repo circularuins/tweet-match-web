@@ -20,10 +20,6 @@
 (filters/add-filter! :get-tweet (fn [screen-name] (mongo/get-user-tweet screen-name)))
 (filters/add-filter! :resize-tag (fn [size] (str (* 5 size))))
 
-(defn home-page []
-      (layout/render
-        "app.html" {:docs (util/md->html "/md/docs.md")}))
-
 (defn hello-page []
       (layout/render
         "hello.html"))
@@ -70,8 +66,7 @@
     (cemerick.austin.repls/cljs-repl repl-env)))
 
 (defroutes home-routes
-  (GET "/" [] (home-page))
-  (GET "/index" [] (index-page))
+  (GET "/" [] (index-page))
   (GET "/ranking/:screenname" [screenname] (ranking-page screenname))
   (GET "/fame" [] (fame-page))
   (GET "/search/:word" [word] (search-page word))
