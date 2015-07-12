@@ -36,7 +36,7 @@ footer article {
 }
 
 .container {
-    max-width: 1200px;
+    max-width: 100%;
 }
 .navbar {
     padding-left: 50px;
@@ -452,7 +452,6 @@ ul.tag > li > a:hover {
     max-width:250px;
     min-height: 10px;
     height: auto !important;
-    height: 50px;
 }
 
 .tweet:before {
@@ -475,4 +474,78 @@ ul.tag > li > a:hover {
     border-radius: 5px;
     bottom: 20px;
     left: -40px;
+}
+
+.desc-wrap {
+    padding-left: 30px;
+    padding-right: 30px;
+    position: relative;
+}
+
+.box-b {
+    position: relative;
+    background: #AAEEDD;
+    display:inline-block;
+    padding: 14px;
+    margin-top: 20px;
+    margin-left: 20px;
+    max-width:500px;
+    min-height: 10px;
+    height: auto !important;
+}
+
+.box-b:after {
+    content: '';
+    position: absolute;
+    display: block;
+    top: 10px;
+    left: -9px;
+    border-top: 5px solid transparent;
+    border-right: 10px solid #AAEEDD;
+    border-bottom: 5px solid transparent;
+}
+
+.box-g {
+    position: relative;
+    background: #F48FB1;
+    display:inline-block;
+    padding: 14px;
+    margin-top: 20px;
+    margin-left: 20px;
+    max-width:500px;
+    min-height: 10px;
+    height: auto !important;
+}
+
+.box-g:after {
+    content: '';
+    position: absolute;
+    display: block;
+    top: 10px;
+    left: -9px;
+    border-top: 5px solid transparent;
+    border-right: 10px solid #F48FB1;
+    border-bottom: 5px solid transparent;
+}
+
+.prof-wrap {
+    position: relative;
+    float: left;
+}
+
+#twit-name {
+    font-family: "HelveticaNeue-CondensedBold","Open Sans Condensed","Helvetica",sans-serif;
+    color: #555;
+    font-size: 1.8em;
+    font-weight: normal;
+    margin-left: 20px;
+}
+
+#twit-id {
+    font-family: "HelveticaNeue-CondensedBold","Open Sans Condensed","Helvetica",sans-serif;
+    color: #555;
+    font-size: 1.2em;
+    font-weight: normal;
+    padding-bottom: 20px;
+    margin-left: 20px;
 }

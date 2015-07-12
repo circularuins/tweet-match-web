@@ -50,12 +50,8 @@
         </div>
       </header>
 
-      <div id="body" class="container">
-        <div class="content">
-          {% block content %}
-          {% endblock %}
-        </div>
-      </div>
+      {% block content %}
+      {% endblock %}
 
       <div id="footer">
         <footer class="text-muted text-center">
@@ -68,7 +64,6 @@
           </article>
         </footer>
       </div>
-
     </div>
 
     <!-- scripts  -->
