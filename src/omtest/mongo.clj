@@ -77,6 +77,14 @@
   [word]
   (filter (fn[x] (some #(= (:word %) word) (:top-words x))) (mc/find-maps db "mach-ranking")))
 
+(defn get-best-couple
+  []
+  (nth (->> (mq/with-collection db "best-matching"
+              (mq/find {:best-leven {mo/$gte 600}})
+              (mq/sort (array-map :best-leven 1))
+              (mq/limit 1)))
+       0))
+
 
 
 ;; 補助関数
