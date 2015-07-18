@@ -47,6 +47,11 @@
   [screen-name]
   (mc/find-one-as-map db "mach-ranking" {:screen-name screen-name}))
 
+(defn get-single-user-by-id
+  [user-id]
+  (mc/find-one-as-map db "mach-ranking" {:user-id user-id}))
+
+
 (defn get-user-tweet
   [screen-name]
     (:tweet (mc/find-one-as-map db "mach-ranking" {:screen-name screen-name})))
@@ -80,10 +85,18 @@
 (defn get-best-couple
   []
   (nth (->> (mq/with-collection db "best-matching"
-              (mq/find {:best-leven {mo/$gte 600}})
-              (mq/sort (array-map :best-leven 1))
-              (mq/limit 1)))
+              (mq/find {:best-leven {mo/$gte 601}})
+              (mq/sort (array-map :best-leven 1 :date -1))
+              (mq/limit 3)))
        0))
+
+(defn make-best-couple-data
+  []
+  (let [best-couple (get-best-couple)]
+    (array-map :user1 (get-single-user-by-id (:user-id best-couple))
+               :user2 (get-single-user (:partner-screen-name best-couple))
+               :leven (:best-leven best-couple)
+               :date (:date best-couple))))
 
 
 

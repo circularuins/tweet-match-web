@@ -30,7 +30,8 @@
 
 (defn index-page []
   (layout/render
-   "index.html" {:users (mongo/get-recent-users)}))
+   "index.html" {:users (mongo/get-recent-users)
+                 :best-couple (mongo/make-best-couple-data)}))
 
 (defn ranking-page [screen-name]
   (layout/render
