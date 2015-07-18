@@ -26,6 +26,13 @@
 
 (def db (mg/get-db (mg/connect) "matching-db"))
 
+(defn create-indexes []
+  (mc/ensure-index db "mach-ranking" (array-map :user-id 1) {:name "by-user-id"})
+  (mc/ensure-index db "mach-ranking" (array-map :screen-name 1) {:name "by-screen-name"})
+  (mc/ensure-index db "mach-ranking" (array-map :date -1) {:name "by-date"})
+  (mc/ensure-index db "mach-ranking" (array-map :pv -1) {:name "by-pv"})
+  (mc/ensure-index db "best-matching" (array-map :best-leven 1) {:name "by-best-leven"}))
+
 (defn get-recent-users-by-sex
   [sex]
   (->> (mq/with-collection db "mach-ranking"

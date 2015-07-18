@@ -1,6 +1,7 @@
 (ns omtest.handler
   (:require [compojure.core :refer [defroutes]]
             [omtest.routes.home :refer [home-routes]]
+            [omtest.mongo :as mongo]
             [omtest.middleware :refer [load-middleware]]
             [omtest.session-manager :as session-manager]
             [noir.response :refer [redirect]]
@@ -38,6 +39,7 @@
   (if (env :dev) (parser/cache-off!))
   ;;start the expired session cleanup job
   (cronj/start! session-manager/cleanup-job)
+  (mongo/create-indexes)
   (timbre/info "\n-=[ omtest started successfully"
                (when (env :dev) "using the development profile") "]=-"))
 
