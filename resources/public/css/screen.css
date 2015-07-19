@@ -267,6 +267,15 @@ article {
     color: #707070;
 }
 
+#intro {
+    font-size: 1.4em;
+    margin-top: 30px;
+    margin-left: 30px;
+    margin-right: 60px;
+    font-weight: bold;
+    color: #707070;
+}
+
 #boy {
     background-color : #AAEEDD;
     border-radius: 10px;
@@ -566,4 +575,12 @@ ul.tag > li > a:hover {
     font-weight: normal;
     padding-bottom: 20px;
     margin-left: 20px;
+}
+
+form, .error {
+    width: 520px;
+    padding: 30px;
+    margin-bottom: 50px;
+    position: relative;
+    background: white;
 }

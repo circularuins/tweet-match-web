@@ -16,6 +16,7 @@
    [noir-exception "0.2.3"]
    [cljs-ajax "0.3.4"]
    [lib-noir "0.9.5"]
+   [bouncer "0.3.3"]
    [org.clojure/clojure "1.6.0"]
    [environ "1.0.0"]
    [ring-server "0.3.1"]

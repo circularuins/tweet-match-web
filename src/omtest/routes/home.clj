@@ -6,7 +6,10 @@
                       [noir.response :refer [edn]]
                       [clojure.pprint :refer [pprint]]
                       [cemerick.austin.repls :refer (browser-connected-repl-js)]
-                      [selmer.filters :as filters]))
+                      [selmer.filters :as filters]
+                      [bouncer.core :as b]
+                      [bouncer.validators :as v]
+                      [ring.util.response :refer [redirect]]))
 
 (filters/add-filter! :leven-to-percent (fn [leven] (mongo/calc-match-percent leven)))
 (filters/add-filter! :leven-label (fn [leven] (let [label (mongo/calc-match-percent leven)]
@@ -32,10 +35,11 @@
   (layout/render
    "about.html"))
 
-(defn index-page []
+(defn index-page [{:keys [flash]}]
   (layout/render
-   "index.html" {:users (mongo/get-recent-users)
-                 :best-couple (mongo/make-best-couple-data)}))
+   "index.html" (merge {:users (mongo/get-recent-users)
+                        :best-couple (mongo/make-best-couple-data)}
+                       (select-keys flash [:screen-name :errors]))))
 
 (defn ranking-page [screen-name]
   (layout/render
@@ -70,8 +74,22 @@
                          (cemerick.austin/repl-env))]
     (cemerick.austin.repls/cljs-repl repl-env)))
 
+(defn validate-screen-name [params]
+  (first
+   (b/validate
+    params
+    :screen-name v/required)))
+
+(defn redirect-ranking-page [{:keys [params]}]
+  (if-let [errors (validate-screen-name params)]
+    (-> (redirect "/")
+        (assoc :flash (assoc params :errors errors)))
+    (do
+      (ranking-page (:screen-name params)))))
+
 (defroutes home-routes
-  (GET "/" [] (index-page))
+  (GET "/" request (index-page request))
+  (POST "/" request (redirect-ranking-page request))
   (GET "/ranking/:screenname" [screenname] (ranking-page screenname))
   (GET "/fame" [] (fame-page))
   (GET "/search/:word" [word] (search-page word))

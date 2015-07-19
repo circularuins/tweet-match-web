@@ -4,6 +4,29 @@
 
   <div class="row">
     <div class="col-lg-12">
+      <div class="row">
+        <div id="intro">
+          TweetMatch（ベータ版）へようこそ!<br/>
+          このサイトは、Twitterで「彼＊ほしい！」とつぶやいたユーザーどうしをマッチングするサイトです。<br/>
+          すでにつぶやき済みでBotにふぁぼられた人は、下の検索窓にTwitterIDを入力してください。<br/>
+          まだつぶやいていない人もマッチングを楽しめるようにする予定なので、お楽しみに。
+        </div>
+        <div Class="span12">
+          <form method="POST" action="/">
+            <p>
+              <input class="form-control"
+                     type="text"
+                     placeholder="例：@ladygaga の場合 => ladygaga"
+                     name="screen-name"
+                     value="{{screen-name}}" />
+            </p>
+            {% if errors.screen-name %}
+            <div class="alert alert-danger">"TwitterIDを入力してください！！"</div>
+            {% endif %}
+            <input type="submit" class="btn btn-primary" value="マッチング結果を見る" />
+          </form>
+        </div>
+        </div>
       <div>
         <div style="margin-top: 30px; margin-bottom: 30px;">
           <h2>今週のベストカップル</h2>
