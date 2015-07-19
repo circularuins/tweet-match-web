@@ -28,6 +28,10 @@
       (layout/render
        "login.html"))
 
+(defn about-page []
+  (layout/render
+   "about.html"))
+
 (defn index-page []
   (layout/render
    "index.html" {:users (mongo/get-recent-users)
@@ -73,6 +77,7 @@
   (GET "/search/:word" [word] (search-page word))
   (GET "/hello" [] (hello-page))
   (GET "/login" [] (login-page))
+  (GET "/about" [] (about-page))
   (POST "/eval" [request] (eval-clojure request))
   (POST "/save" {:keys [body-params]}
     (edn (save-document body-params))))
