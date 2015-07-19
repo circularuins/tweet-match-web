@@ -19,10 +19,12 @@
         <h2>{{forloop.counter}}位</h2>
         <div id="boy">
           <div>{{boy.user-name}}</div>
-          <div>@{{boy.screen-name}}</div>
+          <a href={{servlet-context}}/ranking/{{boy.screen-name}}>
+            <div>@{{boy.screen-name}}</div>
+          </a>
           <div align="right">{{boy.pv}}PV</div>
           <div class="icon">
-            <a href=http://133.242.135.110:3003/ranking/{{boy.screen-name}}>
+            <a href={{servlet-context}}/ranking/{{boy.screen-name}}>
               <img src={{boy.profile-image}} onerror="this.src='{{servlet-context}}/img/golden_turkey.gif';" height=80 width=80 border="0">
             </a>
           </div>
@@ -40,10 +42,12 @@
         <h2>{{forloop.counter}}位</h2>
         <div id="girl">
           <div>{{girl.user-name}}</div>
-          <div>@{{girl.screen-name}}</div>
+          <a href={{servlet-context}}/ranking/{{girl.screen-name}}>
+            <div>@{{girl.screen-name}}</div>
+          </a>
           <div align="right">{{girl.pv}}PV</div>
           <div class="icon">
-            <a href=http://133.242.135.110:3003/ranking/{{girl.screen-name}}>
+            <a href={{servlet-context}}/ranking/{{girl.screen-name}}>
               <img src={{girl.profile-image}} onerror="this.src='{{servlet-context}}/img/golden_turkey.gif';" height=80 width=80 border="0">
             </a>
           </div>
