@@ -87,7 +87,7 @@
 
 (defn get-users-by-word
   [word]
-  (filter (fn[x] (some #(= (:word %) word) (:top-words x))) (mc/find-maps db "mach-ranking")))
+  (mc/find-maps db "mach-ranking" {:top-words {$elemMatch {:word word}}}))
 
 (defn get-best-couple
   []
