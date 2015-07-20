@@ -390,7 +390,7 @@ article {
         margin-bottom: 100px;
     }
     .info {
-        display: none;
+        /* display: none; */
     }
     #body {
         width: 100%;
