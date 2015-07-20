@@ -76,10 +76,11 @@ ul.nav {
 
 #logo {
 
-    padding-top: 6px;
+    padding-top: 10px;
 }
 #logo-image {
-    height: 90px;
+    height: 80px;
+    width: 80px;
 }
 #logo h1#logo-text {
     margin: 0;

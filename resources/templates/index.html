@@ -8,8 +8,7 @@
         <div id="intro">
           TweetMatch（ベータ版）へようこそ!<br/>
           このサイトは、Twitterで「彼＊ほしい！」とつぶやいたユーザーどうしをマッチングするサイトです。<br/>
-          すでにつぶやき済みでBotにふぁぼられた人は、下の検索窓にTwitterIDを入力してください。<br/>
-          まだつぶやいていない人もマッチングを楽しめるようにする予定なので、お楽しみに。
+          自分のモテ度が気になる方は、下の検索窓に自分のTwitterIDを入力してみてください。<br/>
         </div>
         <div Class="span12">
           <form method="POST" action="/">
@@ -23,7 +22,7 @@
             {% if errors.screen-name %}
             <div class="alert alert-danger">"TwitterIDを入力してください！！"</div>
             {% endif %}
-            <input type="submit" class="btn btn-primary" value="マッチング結果を見る" />
+            <input type="submit" class="btn btn-primary" value="検索" />
           </form>
         </div>
         </div>
