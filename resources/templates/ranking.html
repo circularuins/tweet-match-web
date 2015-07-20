@@ -8,8 +8,8 @@
       <h1>ユーザーが見つかりません！</h1>
       {% endifequal %}
       <div class="prof-wrap">
-        <img src={{user.profile-back-url}} alt="not found" border="0" width=100% onerror="this.src='{{servlet-context}}/img/golden_turkey.gif';">
-        <img src={{user.profile-image}} alt="not found" border="0" style="float:left; border-radius: 50px; margin: 10px;" onerror="this.src='{{servlet-context}}/img/golden_turkey.gif';">
+        <img src={{user.profile-back-url}} alt="not found" border="0" width=100% onerror="this.src='{{servlet-context}}/img/notfound.png';">
+        <img src={{user.profile-image}} alt="not found" border="0" style="float:left; border-radius: 50px; margin: 10px;" onerror="this.src='{{servlet-context}}/img/notfound.png';">
         <div class="desc-wrap">
           {% ifequal user.sex "b" %}
           <div class="box-b">
@@ -58,7 +58,7 @@
         <div><h2>{{ranker.leven|leven-to-percent}}%</h2></div>
         <div class="icon">
           <a href={{servlet-context}}/ranking/{{ranker.screen-name}}>
-            <img src={{ranker.profile-image}} onerror="this.src='{{servlet-context}}/img/golden_turkey.gif';" height=80 width=80 border="0">
+            <img src={{ranker.profile-image}} onerror="this.src='{{servlet-context}}/img/notfound.png';" height=80 width=80 border="0">
           </a>
         </div>
         <div class="wrapper">
@@ -79,7 +79,7 @@
         <div style="clear:both;"></div>
         <div class="icon">
           <a href={{servlet-context}}/ranking/{{ranker.screen-name}}>
-            <img src={{ranker.profile-image}} onerror="this.src='{{servlet-context}}/img/golden_turkey.gif';" height=80 width=80 border="0">
+            <img src={{ranker.profile-image}} onerror="this.src='{{servlet-context}}/img/notfound.png';" height=80 width=80 border="0">
           </a>
         </div>
         <div class="wrapper">
