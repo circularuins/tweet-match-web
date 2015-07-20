@@ -1,0 +1,70 @@
+{% extends "base.html" %}
+{% block content %}
+<div id="main-page">
+  <div id="new" class="row">
+    <div class="col-lg-12 splash">
+      <div class="clear" id="featured">
+        <div>
+          <h2>モテランク</h2>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="col-lg-12">
+      <div style="float:left;">
+        <h2>モテ男</h2>
+        {% for boy in boys %}
+        <h2>{{forloop.counter}}位</h2>
+        <div id="boy">
+          <div>{{boy.user-name}}</div>
+          <a href={{servlet-context}}/ranking/{{boy.screen-name}}>
+            <div>@{{boy.screen-name}}</div>
+          </a>
+          <div align="right">{{boy.pv}}PV</div>
+          <div class="icon">
+            <a href={{servlet-context}}/ranking/{{boy.screen-name}}>
+              <img src={{boy.profile-image}} onerror="this.src='{{servlet-context}}/img/golden_turkey.gif';" height=80 width=80 border="0">
+            </a>
+          </div>
+          <div class="wrapper">
+            <div class="tweet">{{boy.tweet}}</div>
+          </div>
+          <div style="clear:both;"></div>
+          <div align="right">{{boy.date}}</div>
+        </div>
+        {% endfor %}
+      </div>
+      <div style="float:left;">
+        <h2>モテ女</h2>
+        {% for girl in girls %}
+        <h2>{{forloop.counter}}位</h2>
+        <div id="girl">
+          <div>{{girl.user-name}}</div>
+          <a href={{servlet-context}}/ranking/{{girl.screen-name}}>
+            <div>@{{girl.screen-name}}</div>
+          </a>
+          <div align="right">{{girl.pv}}PV</div>
+          <div class="icon">
+            <a href={{servlet-context}}/ranking/{{girl.screen-name}}>
+              <img src={{girl.profile-image}} onerror="this.src='{{servlet-context}}/img/golden_turkey.gif';" height=80 width=80 border="0">
+            </a>
+          </div>
+          <div class="wrapper">
+            <div class="tweet">{{girl.tweet}}</div>
+          </div>
+          <div style="clear:both;"></div>
+          <div align="right">{{girl.date}}</div>
+        </div>
+        {% endfor %}
+      </div>
+      <div style="clear:both;"></div>
+    </div>
+  </div>
+</div>
+{% endblock %}
+
+{% block page-scripts %}
+  {% script "//code.jquery.com/jquery-2.0.3.min.js" %}
+{% endblock %}

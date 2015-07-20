@@ -1,0 +1,100 @@
+{% extends "base.html" %}
+{% block content %}
+<div id="main-page" style="max-width: 1200px; margin-left: auto; margin-right: auto;">
+  <div id="home" class="row">
+    <div class="col-lg-12 splash">
+      <div class="clear" id="featured">
+        <div>
+          <p id="about">
+            このサイト（TweetMatch）はHeatOBerが開発・運営しております。HeatOBerは日本の将来、まじで超やばいと感じています。安倍政権を叩けばそれでいいのか？このまま少子化が続いたら、我々が年寄りになった時、いったい誰が税金を払ってくれるのか。そんな我々を守るため、HeatOBerは立ち上がりました。若者よ、もっと殖（ふ）えてくれ。
+          </p>
+
+          <br/>
+          <h2>Tweet Match(Beta) by HeatOBer</h2>
+          <br/>
+          <br/>
+
+          <div>
+            <div class="shell pull-left">
+              <p class="title">誹謗中傷はこちら</p>
+              <pre class="bash hljs">
+<div style="float:left">
+                <span class="prompt">$ </span><span class="cmd">echo "メールアドレス： "</span>
+                <span class="prompt">$ </span><span class="cmd">echo "ツイートも大歓迎！"</span>
+                <span class="prompt">$ </span><span class="cmd">echo "#ツイートマッチ"</span>
+                <span class="prompt">$ </span><span class="cmd">echo "#ツイま"</span>
+                <span class="prompt">$ </span><span class="cmd">echo "#heatober"</span>
+                <span class="prompt">$ </span><span class="cmd">lein ring server 3003</span>
+                Started server on port <span class="hljs-number">3003</span>
+                </div>
+              </pre>
+            </div>
+            <div id="welcome" class="pull-right">
+              <br/>
+              <h3>ツイッターで彼氏彼女欲しいと呟いたきみ。<br/>きみはひとりじゃない！<br/><a href={{servlet-context}}/search/出会い>出会い</a>はいつでもここにある！</h3>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <br/>
+  <br/>
+  <br/>
+  <br/>
+  <div class="row">
+    <div class="col-lg-12">
+      <div class="pull-left info">
+        <h2>Tweet Matchについて</h2>
+
+        <p class="blurb">
+          ある日気づきました。
+          Twitterで彼氏ほしいとつぶやくひとがいる。彼女ほしいとつぶやくひともいる。
+        </p>
+        <br/>
+        <ul class="info-bullets" style="margin-right: 20px;">
+          <li><i class="fa fa-arrow-circle-right"></i> つらいとき、Twitterで彼氏/彼女ほしいとつぶやいてください。</li>
+          <li><i class="fa fa-arrow-circle-right"></i> 我々はそんなあなたの魂の叫びを見逃しません。</li>
+          <li><i class="fa fa-arrow-circle-right"></i> おせっかいな親戚のように、あなたにピッタリの仲間を見つけます。</li>
+          <li><i class="fa fa-arrow-circle-right"></i> おせっかいは正義。</li>
+        </ul>
+      </div>
+      <div class="pull-left info">
+        <h2>相性計算について</h2>
+
+        <p class="blurb">
+          あなたのツイートをリアルタイムでさかのぼって勝手に許可なく解析します。すべて自動で。例えばこういうやり方で。
+        </p>
+        <br/>
+        <ul class="info-bullets" style="margin-right: 20px;">
+          <li><i class="fa fa-arrow-circle-right"></i> TwitterAPIによるリアルタイムツイート監視</li>
+          <li><i class="fa fa-arrow-circle-right"></i> Clojure/Kuromojiによる形態素解析</li>
+          <li><i class="fa fa-arrow-circle-right"></i> テキスト類似度の指標を示すレーベンシュタイン距離。</li>
+          <li><i class="fa fa-arrow-circle-right"></i> Cojure/mongodbによる並行コンピューティング。</li>
+          <li><i class="fa fa-arrow-circle-right"></i> え、Clojure？：神の言語です。</li>
+        </ul>
+      </div>
+      <div class="pull-left info">
+        <h2>HeatOBerについて</h2>
+
+        <p class="blurb">
+          炎上して開ける世界がある。
+          安寧より混沌を。
+          HeatOBerは某コメダコ＊ヒ＊を拠点とするウルトラニート集団です。
+        </p>
+        <br/>
+        <ul class="info-bullets">
+          <li><i class="fa fa-arrow-circle-right"></i> ∞：史上最悪のTwitterスパマー。Bot作成やSNS拡散のプロです。</li>
+          <li><i class="fa fa-arrow-circle-right"></i> らくらくひこ：へっぽこClojurian/Emacian。手続き型チックで副作用まみれのClojureを書くことを得意とする倍プッシャー。</li>
+          <li><i class="fa fa-arrow-circle-right"></i> デザイナー/フロントエンドエンジニアを常時募集中です。興味のある方はこちにメールか、Twitterでコンタクトしてね！</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</div>
+{% endblock %}
+
+{% block page-scripts %}
+{% script "//code.jquery.com/jquery-2.0.3.min.js" %}
+{% endblock %}
