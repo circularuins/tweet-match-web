@@ -33,8 +33,7 @@
   [[lein-ring "0.9.0"]
    [lein-environ "1.0.0"]
    [lein-ancient "0.6.2"]
-   [lein-cljsbuild "1.0.4"]
-   [com.cemerick/austin "0.1.4"]]
+   [lein-cljsbuild "1.0.4"]]
   :ring
   {:handler omtest.handler/app,
    :init omtest.handler/init,
