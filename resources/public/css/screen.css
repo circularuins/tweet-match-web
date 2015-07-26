@@ -569,6 +569,15 @@ ul.tag > li > a:hover {
     margin-left: 20px;
 }
 
+#twit-pv {
+    font-family: "HelveticaNeue-CondensedBold","Open Sans Condensed","Helvetica",sans-serif;
+    color: #555;
+    font-size: 2.0em;
+    font-weight: normal;
+    margin-top: 20px;
+    margin-bottom: 40px;
+}
+
 #twit-id {
     font-family: "HelveticaNeue-CondensedBold","Open Sans Condensed","Helvetica",sans-serif;
     color: #555;
