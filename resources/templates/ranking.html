@@ -7,11 +7,11 @@
     <meta name="twitter:card" content="summary" />
     <meta name="twitter:site" content="@twit_matchBOT" />
     <meta name="twitter:creator" content="@twit_matchBOT" />
-    <meta name="twitter:image" content={{user.profile-image}}>
+    <meta name="twitter:image:src" content="{{user.profile-image}}">
     <meta property="og:title" content="Twit Match" />
     <meta property="og:description" content="世界中の'彼氏/彼女ほしい'というつぶやきを集めて解析し、ユーザーの相性ランキングを勝手に公開しています。" />
-    <meta property="og:url" content=http://www.twit-match.com/ranking/{{user.screen-name}} />
-    <meta property="og:image" content={{user.profile-image}} />
+    <meta property="og:url" content="http://www.twit-match.com/ranking/{{user.screen-name}}" />
+    <meta property="og:image" content="{{user.profile-image}}" />
     
     <title>TwitMatch（ツイま） - 呟きから始まる</title>
     <link href='http://fonts.googleapis.com/css?family=Droid+Sans:400,700' rel='stylesheet' type='text/css'>
@@ -22,6 +22,7 @@
     <link rel="shortcut icon" href="/img/favicon.ico" type="image/x-icon">
     <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.0/css/bootstrap.min.css">
     <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.0/css/bootstrap-theme.min.css">
+    <script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
 
     {% style "/css/highlight.css" %}
     {% style "/css/codestyle.css" %}
@@ -87,6 +88,13 @@
                 </div>
                 {% endifequal %}
                 <div id="twit-pv">閲覧数：{{user.pv}}回</div>
+                <div>
+                  <!-- twit-match -->
+                  <ins class="adsbygoogle"
+                       style="display:inline-block;width:320px;height:100px"
+                       data-ad-client="ca-pub-3317993096876234"
+                       data-ad-slot="9916202103"></ins>
+                </div>
                 <div style="clear:both;"></div>
               </div>
               <div style="clear:both;"></div>
@@ -162,6 +170,15 @@
         </div>
       </div>
 
+      <div>
+        <!-- フッター -->
+        <ins class="adsbygoogle"
+             style="display:block"
+             data-ad-client="ca-pub-3317993096876234"
+             data-ad-slot="5682648901"
+             data-ad-format="auto"></ins>
+      </div>
+
       <div id="footer">
         <footer class="text-muted text-center">
           <article>
@@ -184,12 +201,8 @@
 
     {% script "/js/site.js" %}
 
-    <script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
-    <!-- twit-match -->
-    <ins class="adsbygoogle"
-         style="display:inline-block;width:320px;height:100px"
-         data-ad-client="ca-pub-3317993096876234"
-         data-ad-slot="9916202103"></ins>
+    
+    
     <script>
      (adsbygoogle = window.adsbygoogle || []).push({});
     </script>
