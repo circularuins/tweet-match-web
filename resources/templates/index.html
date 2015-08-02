@@ -26,7 +26,32 @@
           </form>
         </div>
       </div>
+
       <div>
+        <!-- twit-match -->
+        <ins class="adsbygoogle"
+             style="display:inline-block;width:320px;height:100px"
+             data-ad-client="ca-pub-3317993096876234"
+             data-ad-slot="9916202103"></ins>
+      </div>
+
+      <div>
+        <div style="margin-top: 30px; margin-bottom: 30px;">
+          <h2>新着書き込み</h2>
+        </div>
+        <div style="margin-bottom: 30px; margin-left: 10px; overflow: scroll; height: 500px;">
+          <hr size="3">
+          {% for message in messages %}
+          <a href={{servlet-context}}/ranking/{{message.screen-name}} style="float:left;">
+            @{{message.user-name}}
+          </a>
+          <div> << 名無しのうんこ</div>
+          <div style="clear:both;"></div>
+          <div style="margin-left: 20px;">{{message.message}}</div>
+          <div align="right">{{message.date}}</div>
+          <hr size="3">
+          {% endfor %}
+        </div>
         <div style="margin-top: 30px; margin-bottom: 30px;">
           <h2>今週のベストカップル</h2>
         </div>
@@ -108,16 +133,8 @@
         <div style="clear:both;"></div>
       </div>
 
-      <div>
-        <!-- twit-match -->
-        <ins class="adsbygoogle"
-             style="display:inline-block;width:320px;height:100px"
-             data-ad-client="ca-pub-3317993096876234"
-             data-ad-slot="9916202103"></ins>
-      </div>
-
       <div style="margin-top: 60px; margin-bottom: 30px;">
-        <h2>新着100人の心の叫び!</h2>
+        <h2>新着心の叫び!</h2>
       </div>
       <div>
         {% for user in users %}

@@ -40,7 +40,8 @@
 (defn index-page [{:keys [flash]}]
   (layout/render
    "index.html" (merge {:users (mongo/get-recent-users)
-                        :best-couple (mongo/make-best-couple-data)}
+                        :best-couple (mongo/make-best-couple-data)
+                        :messages (mongo/get-recent-messages)}
                        (select-keys flash [:screen-name :errors]))))
 
 (defn ranking-page [screen-name]
@@ -104,6 +105,7 @@
     (do
       (mongo/add-user-message (:user-id params)
                               (:screen-name params)
+                              (:user-name params)
                               (:from params)
                               (:message params))
       (ranking-page (:screen-name params)))))
