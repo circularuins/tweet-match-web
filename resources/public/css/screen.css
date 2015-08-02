@@ -589,7 +589,7 @@ ul.tag > li > a:hover {
 
 form, .error {
     width: 520px;
-    padding: 30px;
+    padding-left: 30px;
     margin-bottom: 50px;
     position: relative;
     background: white;

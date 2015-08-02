@@ -105,6 +105,22 @@
                :leven (:best-leven best-couple)
                :date (:date best-couple))))
 
+(defn add-user-message
+  [id screen-name from message]
+  (let [coll "user-messages"]
+    (mc/insert db coll {:user-id id
+                        :screen-name screen-name
+                        :from from
+                        :message message
+                        :date (.toString (tl/local-now))})))
+
+(defn get-message-by-screen-name
+  [screen-name]
+  (->> (mq/with-collection db "user-messages"
+         (mq/find {:screen-name screen-name})
+         (mq/sort (array-map :date -1))
+         )))
+
 
 
 ;; 補助関数

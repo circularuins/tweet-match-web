@@ -23,10 +23,17 @@
     <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.0/css/bootstrap.min.css">
     <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.0/css/bootstrap-theme.min.css">
     <script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+    <!-- scripts  -->
+    {% script "//code.jquery.com/jquery-2.0.3.min.js" %}
+    {% script "/js/highlight.pack.js" %}
+    {% script "/js/site.js" %}
+    {% script "/js/jquery.lettering.js" %}
+    {% script "/js/jquery.textillate.js" %}
 
     {% style "/css/highlight.css" %}
     {% style "/css/codestyle.css" %}
     {% style "/css/screen.css" %}
+    {% style "/css/animate.css" %}
     {% include "ga.html" %}
   </head>
   <body>
@@ -70,8 +77,66 @@
             {% ifequal user "" %}
             <h1>ユーザーが見つかりません！</h1>
             {% endifequal %}
+
+            <script>
+              $(function () {
+              $('.txt').textillate({
+              //繰り返し true or false
+              loop: true,
+
+              // アニメーションの間隔時間
+              minDisplayTime: 200,
+
+              // アニメーション開始までの遅延時間
+              initialDelay: 100,
+
+              // アニメーションの自動スタート  true or false
+              autoStart: true,
+
+
+              // 開始時のアニメーション詳細設定
+              in: {
+              // エフェクト(アニメーション)の指定(デモページにある名称を指定）
+              effect: 'fadeInLeftBig',
+
+              // 遅延時間の指数
+              delayScale: 1.2,
+
+              // 文字ごとの遅延時間
+              delay: 30,
+
+              // true:アニメーションをすべての文字に同時適用
+              sync: false,
+
+              // true:文字表示がランダムな順に表示される
+              shuffle: false
+              },
+
+              // 終了時のアニメーション詳細設定
+              out: {
+              effect: 'hinge',
+              delayScale: 1.2,
+              delay: 30,
+              sync: false,
+              shuffle: true,
+              }
+
+              });
+              })
+            </script>
+
+            
             <div class="prof-wrap">
-              <img src={{user.profile-back-url}} alt="not found" border="0" width=100% onerror="this.src='{{servlet-context}}/img/notfound.png';">
+              <div>
+                <img src={{user.profile-back-url}} alt="not found" border="0" width=100% onerror="this.src='{{servlet-context}}/img/notfound.png';">
+                <div class="txt" style="position:absolute; top:35px; left:20px; color:#FFFFFF; text-shadow: 2px 2px 1px #00F, -2px 2px 1px #00F, 2px -2px 1px #00F, -2px -2px 1px #00F; font-weight: bold; font-size: 2.4em;">
+                  <ul class="texts">
+                    {% for message in user-message %}
+                    <li>{{message.message}}　名前：{{message.from}} {{message.date}}</li>
+                    {% endfor %}
+                  </ul>
+                </div>
+              </div>
               <img src={{user.profile-image}} alt="not found" border="0" style="float:left; border-radius: 50px; margin: 10px;" onerror="this.src='{{servlet-context}}/img/notfound.png';">
               <div class="desc-wrap">
                 {% ifequal user.sex "b" %}
@@ -98,8 +163,31 @@
                 <div style="clear:both;"></div>
               </div>
               <div style="clear:both;"></div>
-              <div id="twit-name">{{user.user-name}}</div>
-              <div id="twit-id">@{{user.screen-name}}</div>
+              <div style="float: left;">
+                <div id="twit-name">{{user.user-name}}</div>
+                <div id="twit-id">@{{user.screen-name}}</div>
+              </div>
+              <div style="float: left;">
+                <form method="POST" action="/ranking/{{user.screen-name}}">
+                  <p>
+                    <input class="form-control"
+                           type="text"
+                           maxlength='50'
+                           placeholder="ここにメッセージ"
+                           name="message"
+                           value="{{message}}"
+                           style="font-size: 1.4em;"/>
+                  </p>
+                  {% if errors.screen-name %}
+                  <div class="alert alert-danger">"メッセージを入力してください！！"</div>
+                  {% endif %}
+                  <input type="hidden" name="user-id" value="{{user.user-id}}">
+                  <input type="hidden" name="screen-name" value="{{user.screen-name}}">
+                  <input type="hidden" name="from" value="名無しのうんこ">
+                  <input type="submit" class="btn btn-primary" value="↑書き込む↑" style="font-size: 2.4em; font-weight: bold;"/>
+                </form>
+              </div>
+              <div style="clear:both;"></div>
             </div>
             <div style="clear:both;"></div>
             <h3>よくつぶやく</h3>
@@ -197,13 +285,6 @@
       </div>
     </div>
 
-    <!-- scripts  -->
-
-    {% script "/js/highlight.pack.js" %}
-
-    {% script "/js/site.js" %}
-
-    
     
     <script>
      (adsbygoogle = window.adsbygoogle || []).push({});
