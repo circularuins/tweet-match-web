@@ -47,6 +47,7 @@
   (layout/render
    "ranking.html" {:pv (mongo/inc-pv screen-name)
                    :user (mongo/get-single-user screen-name)
+                   :user-message (mongo/get-message-by-screen-name screen-name)
                    }))
 
 (defn fame-page []
@@ -89,10 +90,30 @@
     (do
       (ranking-page (:screen-name params)))))
 
+(defn validate-message [params]
+  (first
+   (b/validate
+    params
+    :message v/required)))
+
+(defn redirect-my-ranking-page [{:keys [params]}]
+  (if-let [errors (validate-message params)]
+    (-> (ranking-page (:screen-name params))
+;        (assoc :flash (assoc params :errors errors))
+        )
+    (do
+      (mongo/add-user-message (:user-id params)
+                              (:screen-name params)
+                              (:from params)
+                              (:message params))
+      (ranking-page (:screen-name params)))))
+
+
 (defroutes home-routes
   (GET "/" request (index-page request))
   (POST "/" request (redirect-ranking-page request))
   (GET "/ranking/:screenname" [screenname] (ranking-page screenname))
+  (POST "/ranking/:screenname" request (redirect-my-ranking-page request))
   (GET "/fame" [] (fame-page))
   (GET "/search/:word" [word] (search-page word))
   (GET "/hello" [] (hello-page))
