@@ -39,17 +39,16 @@
         <div style="margin-top: 30px; margin-bottom: 30px;">
           <h2>新着書き込み</h2>
         </div>
-        <div style="margin-bottom: 30px; margin-left: 10px; overflow: scroll; height: 500px;">
-          <hr size="3">
+        <div style="margin-bottom: 30px; margin-left: 40px; margin-right: 40px; padding: 10px; overflow: scroll; height: 500px; background-color: #E6EE9C;">
           {% for message in messages %}
-          <a href={{servlet-context}}/ranking/{{message.screen-name}} style="float:left;">
+          <a href={{servlet-context}}/ranking/{{message.screen-name}} style="float:left; font-weight: bold;">
             @{{message.user-name}}
           </a>
           <div> << 名無しのうんこ</div>
           <div style="clear:both;"></div>
           <div style="margin-left: 20px;">{{message.message}}</div>
           <div align="right">{{message.date}}</div>
-          <hr size="3">
+          <hr size="3" style="background-color: #000000;">
           {% endfor %}
         </div>
         <div style="margin-top: 30px; margin-bottom: 30px;">
@@ -133,7 +132,18 @@
         <div style="clear:both;"></div>
       </div>
 
-      <div style="margin-top: 60px; margin-bottom: 30px;">
+      <script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+      <!-- 中段レスポンシブ -->
+      <ins class="adsbygoogle"
+           style="display:block"
+           data-ad-client="ca-pub-3317993096876234"
+           data-ad-slot="2994390904"
+           data-ad-format="auto"></ins>
+      <script>
+        (adsbygoogle = window.adsbygoogle || []).push({});
+      </script>
+
+      <div style="margin-top: 30px; margin-bottom: 30px;">
         <h2>新着心の叫び!</h2>
       </div>
       <div>
